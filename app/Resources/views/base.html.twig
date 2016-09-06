@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    {% block stylesheets %}
+        {% stylesheets 'bootstrap-3.3.7/dist/css/bootstrap.min.css' filter='cssrewrite' output='css/compiled/app.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+{% include "partials/navbar.twig.html" %}
+<div class="container">
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+    {% block body %} {% endblock %}
+</div>
+
+{% block javascripts %}
+    {% javascripts 'js/jquery-3.1.0.min.js' 'js/script.js' 'bootstrap-3.3.7/dist/js/bootstrap.min.js'%}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+</body>
+</html>
