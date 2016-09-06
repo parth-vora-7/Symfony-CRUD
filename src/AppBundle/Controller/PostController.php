@@ -156,8 +156,7 @@ class PostController extends Controller
         $deleteForms = array();
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('AppBundle:User')->find($this->getUser()->getId());
-        dump($user->getPost());exit;
-        //->getPost();
+        $posts = $user->getPost()->getValues();
 
         foreach ($posts as $post) {
             $deleteForms[$post->getId()] = $this->createDeleteForm($post)->createView();

@@ -46,7 +46,7 @@ class Post
     private $publishedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="Post")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="post")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

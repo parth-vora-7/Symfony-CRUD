@@ -24,9 +24,14 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="User")
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="user")
      */
     private $post;
+
+    public function __construct()
+    {
+        $this->post = new ArrayCollection();
+    }
 
 
     /**

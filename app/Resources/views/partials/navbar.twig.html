@@ -15,10 +15,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="{% if app.request.attributes.get('_route') == 'homepage' %}active{% endif %}"><a href="{{ path('homepage') }}">Home<span class="sr-only">(current)</span></a></li>
-                <li class="{% if app.request.attributes.get('_route') == 'post_index' %}active{% endif %}"><a href="{{ path('post_index') }}">List posts</a></li>
-                <li class="{% if app.request.attributes.get('_route') == 'post_new' %}active{% endif %}"><a href="{{ path('post_new') }}">Add post</a></li>
-                <li class="{% if app.request.attributes.get('_route') == 'user_posts' %}active{% endif %}"><a href="{{ path('user_posts') }}">My posts</a></li>
+                <li class="{% if app.request.attributes.get('_route') == 'homepage' %}active{% endif %}"><a
+                        href="{{ path('homepage') }}">Home<span class="sr-only">(current)</span></a></li>
+                <li class="{% if app.request.attributes.get('_route') == 'post_index' %}active{% endif %}"><a
+                        href="{{ path('post_index') }}">All posts</a></li>
+                <li class="{% if app.request.attributes.get('_route') == 'user_posts' %}active{% endif %}"><a
+                        href="{{ path('user_posts') }}">My posts</a></li>
+                <li class="{% if app.request.attributes.get('_route') == 'post_new' %}active{% endif %}"><a
+                        href="{{ path('post_new') }}">Add post</a></li>
             </ul>
             <form class="navbar-form navbar-left">
                 <div class="form-group">
@@ -33,14 +37,24 @@
                        aria-expanded="false">Hello, <strong>{{ app.user.username|default('') }}</strong><span
                             class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ path('fos_user_profile_edit') }}" class="{% if app.request.attributes.get('_route') == 'fos_user_profile_edit' %}active{% endif %}">Edit profile</a></li>
-                        <li><a href="{{ path('fos_user_change_password') }}" class="{% if app.request.attributes.get('_route') == 'fos_user_change_password' %}active{% endif %}">Change password</a></li>
-                        <li><a href="{{ path('fos_user_security_logout') }}" class="{% if app.request.attributes.get('_route') == 'fos_user_security_logout' %}active{% endif %}">Logout</a></li>
+                        <li><a href="{{ path('fos_user_profile_edit') }}"
+                               class="{% if app.request.attributes.get('_route') == 'fos_user_profile_edit' %}active{% endif %}">Edit
+                            profile</a></li>
+                        <li><a href="{{ path('fos_user_change_password') }}"
+                               class="{% if app.request.attributes.get('_route') == 'fos_user_change_password' %}active{% endif %}">Change
+                            password</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}"
+                               class="{% if app.request.attributes.get('_route') == 'fos_user_security_logout' %}active{% endif %}">Logout</a>
+                        </li>
                     </ul>
                 </li>
                 {% else %}
-                <li><a href="{{ path('fos_user_security_login') }}" class="{% if app.request.attributes.get('_route') == 'fos_user_security_login' %}active{% endif %}">Login</a></li>
-                <li><a href="{{ path('fos_user_registration_register') }}" class="{% if app.request.attributes.get('_route') == 'fos_user_registration_register' %}active{% endif %}">Register</a></li>
+                <li><a href="{{ path('fos_user_security_login') }}"
+                       class="{% if app.request.attributes.get('_route') == 'fos_user_security_login' %}active{% endif %}">Login</a>
+                </li>
+                <li><a href="{{ path('fos_user_registration_register') }}"
+                       class="{% if app.request.attributes.get('_route') == 'fos_user_registration_register' %}active{% endif %}">Register</a>
+                </li>
                 {% endif %}
             </ul>
         </div><!-- /.navbar-collapse -->
