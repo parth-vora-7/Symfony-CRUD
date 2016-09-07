@@ -23,6 +23,25 @@ class Post
     private $id;
 
     /**
+     * @var
+     */
+
+    private $public;
+
+    function getPublic()
+    {
+        return $this->public;
+    }
+
+    function setPublic($public)
+    {
+
+        $this->public = $public;
+        return $this;
+    }
+
+
+    /**
      * @var string
      * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=255)

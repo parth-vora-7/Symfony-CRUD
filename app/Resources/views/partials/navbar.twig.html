@@ -19,10 +19,12 @@
                         href="{{ path('homepage') }}">Home<span class="sr-only">(current)</span></a></li>
                 <li class="{% if app.request.attributes.get('_route') == 'post_index' %}active{% endif %}"><a
                         href="{{ path('post_index') }}">All posts</a></li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li class="{% if app.request.attributes.get('_route') == 'user_posts' %}active{% endif %}"><a
                         href="{{ path('user_posts') }}">My posts</a></li>
                 <li class="{% if app.request.attributes.get('_route') == 'post_new' %}active{% endif %}"><a
                         href="{{ path('post_new') }}">Add post</a></li>
+                {% endif %}
             </ul>
             <form class="navbar-form navbar-left">
                 <div class="form-group">
@@ -31,7 +33,7 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                {% if app.user %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Hello, <strong>{{ app.user.username|default('') }}</strong><span

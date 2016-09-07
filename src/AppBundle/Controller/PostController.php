@@ -47,6 +47,10 @@ class PostController extends Controller
      */
     public function newAction(Request $request)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $post = new Post();
         $form = $this->createForm('AppBundle\Form\PostType', $post);
         $form->handleRequest($request);
@@ -90,7 +94,6 @@ class PostController extends Controller
      */
     public function editAction(Request $request, Post $post)
     {
-        $deleteForm = $this->createDeleteForm($post);
         $editForm = $this->createForm('AppBundle\Form\PostType', $post);
         $editForm->handleRequest($request);
 
@@ -104,8 +107,7 @@ class PostController extends Controller
 
         return $this->render('post/edit.html.twig', array(
             'post' => $post,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'edit_form' => $editForm->createView()
         ));
     }
 
@@ -153,6 +155,10 @@ class PostController extends Controller
      */
     public function userPostAction()
     {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $deleteForms = array();
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('AppBundle:User')->find($this->getUser()->getId());

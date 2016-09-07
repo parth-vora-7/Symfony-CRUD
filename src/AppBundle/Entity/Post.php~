@@ -22,6 +22,11 @@ class Post
      */
     private $id;
 
+    
+
+    private $public;
+
+
     /**
      * @var string
      * @Assert\NotBlank()
@@ -46,8 +51,8 @@ class Post
     private $publishedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="user", inversedBy="post")
-     * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="post")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
@@ -131,5 +136,29 @@ class Post
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\user $user
+     *
+     * @return Post
+     */
+    public function setUser(\AppBundle\Entity\user $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\user
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
